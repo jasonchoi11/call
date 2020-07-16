@@ -14,6 +14,13 @@ public class Call {
 
     @PostPersist
     public void onPostPersist(){
+
+        try {
+            Thread.currentThread().sleep((long) (400 + Math.random() * 220));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         CallSurveyed callSurveyed = new CallSurveyed();
         BeanUtils.copyProperties(this, callSurveyed);
         callSurveyed.publishAfterCommit();
