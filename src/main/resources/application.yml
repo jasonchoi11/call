@@ -25,10 +25,10 @@ spring:
       bindings:
         event-in:
           group: Call
-          destination: rental_private
+          destination: rentals
           contentType: application/json
         event-out:
-          destination: rental_private
+          destination: rentals
           contentType: application/json
 
 logging:
