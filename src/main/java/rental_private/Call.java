@@ -12,14 +12,18 @@ public class Call {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @PostPersist
-    public void onPostPersist(){
-
+    @PrePersist
+    public void onPrePersist(){
         try {
             Thread.currentThread().sleep((long) (400 + Math.random() * 220));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @PostPersist
+    public void onPostPersist(){
+
 
         CallSurveyed callSurveyed = new CallSurveyed();
         BeanUtils.copyProperties(this, callSurveyed);
